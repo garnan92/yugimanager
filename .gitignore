@@ -1,0 +1,5 @@
+Api/node_modules
+App/node_modules
+
+Api/package-lock.json
+App/package-lock.json
