@@ -3,6 +3,8 @@ services:
   mongo:
     image: mongo
     restart: always
+    volumes:
+      - mongovolume:/data/db
     ports:
       - 27017:27017
 
@@ -26,6 +28,8 @@ services:
       - 3000:3000
     depends_on:
       - mongo
+    environment:
+      - CHOKIDAR_USEPOLLING=true
 
   app:
     image: node:14-alpine
@@ -39,6 +43,8 @@ services:
       - api
     ports:
       - 80:80
+    environment:
+      - CHOKIDAR_USEPOLLING=true
 
 volumes:
   nodemodules: {}
